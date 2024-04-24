@@ -16,7 +16,7 @@ const config = {
   mode: "development",
   devtool: false,
   entry: {
-    main: "./src/index",
+    main: "./src/index.ts",
   },
   plugins: [new HtmlWebpackPlugin()],
   output: {
@@ -29,6 +29,39 @@ const config = {
   experiments: {
     css: true,
   },
+  module: {
+    rules: [
+      {
+        test: /\.(j|t)s$/,
+        exclude: [/[\\/]node_modules[\\/]/],
+        // loader: "builtin:swc-loader",
+        // options: {
+        //   sourceMap: true,
+        //   jsc: {
+        //     parser: {
+        //       syntax: "typescript",
+        //     },
+        //     externalHelpers: true,
+        //     transform: {
+        //       react: {
+        //         runtime: "automatic",
+        //         development: true,
+        //       },
+        //     },
+        //   },
+        // },
+        loader: "@graphitation/embedded-document-artefact-loader/webpack"
+      },
+    ],
+  },
+  resolve:
+  {
+    alias: {
+      htmlparser2: path.resolve( __dirname,
+        "node_modules/htmlparser2"
+      ),
+    }
+  }
 };
 
 export default config;
