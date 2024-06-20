@@ -13,7 +13,7 @@ if (!isRunningRspack && !isRunningWebpack) {
  */
 const config = {
   mode: "development",
-  devtool: "cheap-source-map", // "cheap-source-map",
+  devtool: "cheap-module-source-map", // "cheap-source-map",
   entry: {
     main:  {
     import: "./src/index.ts",
